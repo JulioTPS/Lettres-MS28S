@@ -98,23 +98,30 @@ public class MainCanvas extends Canvas {
 		if (block == null) {
 			return;
 		}
+		// Desenhar o retângulo e o texto do bloco
+		drawBlockContent(g, block);
+	}
+	
+	
+	private void drawBlockContent(Graphics2D g, Block block) {
+		// Desenhar o retângulo do bloco
 		g.setColor(block.getColor());
-		g.fill3DRect(block.getX() * getBlockWidth(), block.getY()
-				* getBlockHeight(), getBlockWidth(), getBlockHeight(), true);
+		g.fill3DRect(block.getX() * getBlockWidth(), block.getY() * getBlockHeight(), 
+					 getBlockWidth(), getBlockHeight(), true);
 		g.setColor(block.getFontColor());
 		g.drawRect(block.getX() * getBlockWidth() + getBlockWidth() / 10 - 1,
-				block.getY() * getBlockHeight() + getBlockHeight() / 10 - 1,
-				getBlockWidth() - getBlockWidth() / 5, getBlockHeight()
-						- getBlockHeight() / 5);
-
+				   block.getY() * getBlockHeight() + getBlockHeight() / 10 - 1,
+				   getBlockWidth() - getBlockWidth() / 5, 
+				   getBlockHeight() - getBlockHeight() / 5);
+	
+	
+		// Desenhar o texto do bloco
 		g.setFont(blockFont);
-
-		g.drawString(block.getLetter(), block.getX()
-				* getBlockWidth()
-				+ (getBlockWidth() - g.getFontMetrics().stringWidth(
-						block.getLetter())) / 2, (block.getY() + 1)
-				* getBlockHeight() - getBlockHeight() / 4);
+		g.drawString(block.getLetter(), block.getX() * getBlockWidth()
+					 + (getBlockWidth() - g.getFontMetrics().stringWidth(block.getLetter())) / 2, 
+					 (block.getY() + 1) * getBlockHeight() - getBlockHeight() / 4);
 	}
+	
 
 	protected BufferStrategy getStrategy() {
 		if (strategy == null) {
