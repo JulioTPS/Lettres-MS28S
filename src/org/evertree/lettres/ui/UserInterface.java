@@ -397,7 +397,7 @@ public class UserInterface extends JFrame {
 		icons.add(Icons.LETTRES_16);
 		icons.add(Icons.LETTRES_32);
 		setIconImages(icons);
-		setResizable(false);
+		setResizable(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addFocusListener(new FocusAdapter() {
 			@Override
