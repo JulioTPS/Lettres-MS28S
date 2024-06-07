@@ -63,6 +63,11 @@ public class Game implements Serializable {
 	}
 
 	public void startGame() {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		dropping = null;
 		level = 1;
 		lines = 0;
