@@ -37,7 +37,7 @@ public class ListActionsAction extends Action {
 		true);
 	window.setIconImage(Icons.LETTRES_16);
 	window.setSize(250, 500);
-	window.setResizable(true);
+	window.setResizable(false);
 	window.setLocationRelativeTo(null);
 	((JPanel) window.getContentPane()).setBorder(BorderFactory
 		.createLineBorder(window.getBackground(), 5));
