@@ -193,47 +193,43 @@ public class Game implements Serializable {
 		}
 	}
 
-private void gameLoop() {
-    while (true) {
-        handleGameState();
-        try {
-            Thread.sleep(1000 / Parameters.FPS);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}
+	private void gameLoop() {
+		while (true) {
+			handleGameState();
+			try {
+				Thread.sleep(1000 / Parameters.FPS);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
-private void handleGameState() {
-    switch (gameStatus) {
-        case PLAYING:
-            handlePlayingState();
-            break;
-        case OVER:
-            handleGameOverState();
-            break;
-        case WAITING:
-            userInterface.showMessage(MessageLine.MESSAGE_INTRO, true);
-            break;
-        case PAUSED:
-            userInterface.showMessage(MessageLine.MESSAGE_PAUSED, true);
-            break;
-    }
-}
+	private void handleGameState() {
+		switch (gameStatus) {
+			case PLAYING:
+				handlePlayingState();
+				break;
+			case OVER:
+				userInterface.showMessage(MessageLine.MESSAGE_GAME_OVER, false);
+				break;
+			case WAITING:
+				userInterface.showMessage(MessageLine.MESSAGE_INTRO, true);
+				break;
+			case PAUSED:
+				userInterface.showMessage(MessageLine.MESSAGE_PAUSED, true);
+				break;
+		}
+	}
 
-private void handlePlayingState() {
-    if (dropPiece()) {
-        moveLeft();
-        moveRight();
-        moveDown();
-        rotate();
-        userInterface.paint();
-    }
-}
-
-private void handleGameOverState() {
-    userInterface.showMessage(MessageLine.MESSAGE_GAME_OVER, false);
-}
+	private void handlePlayingState() {
+		if (dropPiece()) {
+			moveLeft();
+			moveRight();
+			moveDown();
+			rotate();
+			userInterface.paint();
+		}
+	}
 
 	private Piece consumeNext() {
 		Piece piece = null;
